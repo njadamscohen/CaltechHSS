@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,cancel}
+\usepackage{hyperref}
+
+\title{SS 201A: }
+\author{George Vega Yon\and Nicholas Adams-Cohen}
+
+% Some useful macros
+\def\reals{\mathbb{R}}
+\def\noR{\cancel{R}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Sep 29th, 2014}
+
+\subsection*{Why study choice theory?}
+
+The agent has a utility function and maximizes $\max_{x\in X}U(x)$, where $U$ is
+a utiliy function and $X$ is the set of available actions.
+
+\emph{What is the theorical foundation of this model?} is precisely what this
+class is about.
+
+Our basic tool is a preference relation $\prec$ or $R$. ``$x\prec y$'': agent 
+prefers $y$ to $x$. More formally, the result we are going to obtain is: 
+``$\prec$'' satisfies  axioms 1,...,$n$ iff there exists a function 
+$U:X\to\reals$ s.t. $U(x)<U(y) \iff x\prec y$.
+
+\begin{align*}
+l&=(x_1;p;x_2;1-p) \\
+r&=(y_1;q;y_2;1-q)
+\end{align*}
+
+$l\prec r \iff pU(x_1) + (1-p)U(x_2) < qU(y_1) + (1-q)U(y_2)$: von 
+Neumann-Morgenstenn Expected utility theory.
+
+\subsection*{Representation of Weak Order}
+
+Assuming $X$ is a countable set:
+
+\begin{itemize}
+\item $\prec$ is \underline{weak order} iff $\exists U:X\to\reals$ s.t. $x\prec y
+\iff U(x)<U(y)$.
+
+\item \underline{Binary relation} on a set $Y$ is a set of ordered pairs $(x,y)$
+with $x,y\in Y$.
+
+\item \underline{Notation}:
+
+\begin{align*}
+R&:\text{Binary relation} \\
+\prec&:\text{Preference relation}\\\\
+xRy&: \text{ means }(x,y) \in R \\
+x\noR y&:\text{ means }(x,y)\notin R
+\end{align*}
+
+\item \underline{Remark} if $R$ is a binary relation on $Y$, exactly one of the
+following is true:
+\begin{enumerate}
+\item $xRy \wedge yRx$ or 
+\item $xRy \wedge y\noR x$ or 
+\item $x\noR y \wedge yRx$ or 
+\item $x\noR y \wedge y\noR x$
+
+\end{enumerate}
+\end{itemize}
+
+\noindent {\bf Example} $Y$ is the set of all living people, and $R_1:$``is shorter
+than'' ($<$).
+
+\noindent {\bf Definition} A binray relation $R$ on $Y$ is:
+\begin{enumerate}
+\item Reflexive if $xRx \forall x\in Y$.
+\item Irriflexive if $x\cancel{R}x \forall x\in Y$.
+\item Symmetric if $[xRy \vee yRx] \forall x,y\in Y$.
+\item Asymmetric if $[xRy\implies x\noR y \forall x,y\in Y]$.
+\item Antisymmetric if $[(xRy \wedge yRx)\implies x=y] \forall x,y\in Y$.
+\item Negatively transitive if $[(x\noR y \wedge y\noR z)\implies x\noR z] \forall
+x,y,z\in Y$.
+\item Connected (complete) if $[xRy \vee yRx] \forall x,y\in Y$.
+\item Weakly connected if $x\not=y\implies xRy \vee yRx\forall x,y\in Y$.
+\end{enumerate}
+
+\noindent {\bf Exercices} Show the following statements:
+\begin{enumerate}
+\item Asymetric binary relation is irriflexive.
+
+\noindent {\bf Proof} Assume a relation which is not irreflexive, then $(x,x)\in
+R \implies (xRx\implies x\noR x)$, which is a contradiction.
+
+\item An irreflexive and transitive binray relation is asymmetric.
+
+\noindent {\bf Proof} If $R$ were not asymetric it would be true that $xRy\implies yRx$, then, by
+transitivity, $xRx$, this is, reflexivity, which is a contradiction.
+
+\item A binary relation $R$ is neg. trans. iff $\forall x,y,z\in Y (xRy)\implies
+(xRz \vee zRy)$.
+
+\noindent {\bf Proof} By the conterpositive of $x\noR y \wedge y\noR z\implies x\noR z$, we know that
+$xRz\implies xRy \vee yRz$. At the same time the counterpositive of $xRy\implies
+xRz \vee zRy$ implies that $x\noR z \wedge z\noR y \implies x\noR y$.
+
+\item Find all the properties of $R_1$ (shorter than).
+
+\noindent {\bf Sol}
+\begin{enumerate}
+\item It can't be reflexive, then is irriflexive
+\item A
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
