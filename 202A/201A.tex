@@ -1,0 +1,124 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,cancel}
+\usepackage{hyperref}
+\usepackage{qtree}
+
+
+\title{SS 202A: }
+\author{George Vega Yon\and Nicholas Adams-Cohen}
+
+% Some useful macros
+\def\reals{\mathbb{R}}
+\def\noR{\cancel{R}}
+
+\begin{document}
+\maketitle
+
+
+\section*{Lecture 1: Condosect Paradox. Sept 30th, 2014}
+
+\subsection*{Example 1: Social Choice Theory}
+Ben, Matt, and Alex are on a search comittee to hire the next faculty member. They have the following preferences: 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+                                         & Alex                            & Matt                            & Ben                             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Political Scientist} & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{2}} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Theorist}            & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{3}} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Econometrician}      & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{1}} \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+
+\textbf{Note:} Every actor is rational in that the have a clear rank order. But could a collective decision be reached?
+
+Under \underline{Majority Rule}:
+\begin{itemize}
+
+\item (Alex \& Ben) P $>$ T
+\item (Matt \& Alex) T $>$ M
+\item (Ben \& Matt) M $>$ P
+\end{itemize}
+
+We define \underline{social ranking} as $xPy$ if and only if a majority prefer x to y. 
+\emph{\textbf{But:}}
+
+\begin{align*}
+P &> T \\
+T&>M\\
+M&>P
+\end{align*}
+
+Which violates transitivity.
+
+\subsection*{Example 2: Game Theory}
+
+What if you create some institution with some rules and structure that will allow us to determine what people will do? 
+
+\textbf{\underline{Binary Agenda Setting:}}
+
+We have a sequence of votes of $x$ vs. $y$ which obeys the following rules:
+
+\begin{itemize}
+
+\item Finite.
+
+\item The winner of round $t$ is one of the alternatives in round $t+1$.
+
+\item The winner of the final round prevails.
+\end{itemize}
+\textbf{Tree:} If Alex was the agenda-setter, begin with Metrics vs. Political Science. If Metrics prevails, in the second round the vote will be Metrics vs. Theory, and Theory will win the vote, so a vote for Metrics in the first round is \emph{in actuality} a vote for Theory. If Political Science prevails, it will be a vote of Political Science vs. Theory, and Political Science will win, so a vote for Political Science in the first round is actually a vote for Political Science.
+
+Thus, by setting the agenda in sequential voting, Metrics vs. Political Science is really a vote for Theory vs. Political Science and Political Science prevails.  %Insert Tree if time
+
+\emph{*Takeaway:} By adding structure, we can form a point prediction. By manipulating what is voted for in the first round, you can determine the victor in the second round.
+
+However, the agenda-setting power is limited. Consider the following preferences:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+                                         & Alex                            & Matt                            & Ben                             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Political Scientist} & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{3}} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Theorist}            & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{2}} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Econometrician}      & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{1}} \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+
+Now, though Alex still prefers Political Science, there is nothing he can do as agenda setter to get this outcome. 
+
+\subsection*{Example 3: How to choose an Agenda Setter?}
+
+In the previous example, Alex was ``given'' as the agenda setter \dots but how was he choosen? 
+Common approach is to make this a 2-stage process: 
+\begin{enumerate}
+
+\item How to choose an agenda-setter?
+\item How will everyone vote? 
+\end{enumerate}
+
+We can write out everyone's preferences for an agenda-setter\dots but we quickly realize that preferences over an agenda-setter (who have the ability to determine the next faculty member) become peoples preferences over the next faculty member. That is:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+                                         & Alex                            & Matt                            & Ben                             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Alex A.S. = (P)} & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{2}} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Matt A.S. = (T)}            & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{3}} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Ben A.S. = (M)}      & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{1}} \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+
+So choosing an institutional structure ``inherets'' the previous preferences. So we are going to need \emph{more} knowledge/ assumptions about the institutional structure.
+
+\emph{*Takeaway:} Math alone does not give us the answer.
+
+\subsection*{Three Themes of the Course}
+\begin{enumerate}
+
+\item \underline{Will of Society} is often a meaningless concept.
+\item Adding \underline{institutions} can help\dots
+\item But only to a point. \underline{Assumptions} matter, and you need them.
+\end{enumerate}
+\end{document}
