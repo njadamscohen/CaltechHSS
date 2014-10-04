@@ -190,4 +190,60 @@ x\prec z$
 \item $\precsim$ is transitive and connected.
 \end{enumerate}
 
+\noindent {\bf Proof (George)}
+\begin{enumerate}
+\item $x\prec y \veebar x\sim y \veebar y\prec x$
+\begin{enumerate}
+\item[\bf (case 1)] Assume $x\prec y\wedge y\prec x$, then
+\item[Transitivity] $x\prec x$, which is a contradiction as $\prec$ is not symmetric
+\item[\bf (case 2)] Assume $x\sim y \wedge y\prec x$, then
+\item[By def] $x\sim y\implies x\not\prec y \wedge y\not\prec x$, then
+\item[] as $y\prec x$, it would be a contradiction.
+\item[\bf (case 3)] Assume $x\prec y \wedge x\sim y$
+\item[By def] $x\sim y\implies x\not\prec y \wedge y\not\prec x$, then
+\item[] as $x\prec y$, it is a contradiction. QED
+\end{enumerate}
+
+\item $\prec$ is transitive
+\begin{enumerate}
+\item[] If it is not transitive, then $\exists x,y,z$ s.t. $x\prec y\wedge y\prec
+z \implies x\not\prec z$
+\item[By def] $x\prec y\iff x\precsim y \wedge y\not\precsim x$
+\item[] $y\prec z\iff y\precsim z \wedge z\not\precsim y$
+\item[Transitivity] $x\precsim z$, which $\iff x\prec z \vee x\sim y$
+\item[] But as $x\prec z$, then $x\sim y$ would be a contradiction,
+\item[] Thereby, it should be true that $\prec$ is transitive. QED
+\end{enumerate}
+
+\item $\sim$ is an equivalence
+\begin{enumerate}
+\item[] Take any $x,y,z\in X$ s.t. $x\sim y \wedge y\sim z$, then
+\item[Transitivity] $x\sim z$, and symmetry of $\sim$ implies $z\sim x$
+\item[Transitivity] $x\sim x$, thus, as it must be true that $x=x$
+\item[] $\sim$ should be an equivalence.
+\end{enumerate}
+
+\item (i) $(x\prec y, y\sim z)\implies x\prec z$ (ii) $(x\sim y, y\prec z)\implies
+x\prec z$
+\begin{enumerate}
+\item[\bf (i)] $(x\prec y, y\sim z)\implies x\prec z$
+\item[By def] $((x\precsim y \wedge y\not\precsim x)\wedge (y\precsim z \wedge 
+z\precsim y))$
+\item[Transitivity] $x\precsim z$, which 
+\item[By def] $x\prec z \vee x\sim z$, but
+\item[Symmetry \& Transitivity] $x\sim z\implies x\sim y$, it should be
+\item[] true that $x\prec z$ QED.
+\item[]
+\item[\bf (ii)] $(x\sim y, y\prec z)\implies x\prec z$
+\item[By def] $(x\precsim y \wedge y\precsim x) \wedge (y\precsim z\wedge
+z\not\precsim y)$
+\item[Transitivity] $x\precsim z$, which
+\item[By def] $x\sim z \vee x\prec z$, but as by
+\item[Transitivity] $x\sim z\implies y\sim z$, them it should be true that
+\item[] $x\prec z$ QED.
+\end{enumerate}
+
+\item $\precsim$ is transitive and connected.
+\end{enumerate}
+
 \end{document}
