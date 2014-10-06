@@ -244,6 +244,15 @@ z\not\precsim y)$
 \end{enumerate}
 
 \item $\precsim$ is transitive and connected.
+
+\begin{enumerate}
+\item[\bf (transitive)]  $\exists x,y,z\in X$ s.t. $x\precsim y, y\precsim z$, then
+\item[by def] $(x\prec y \vee x\sim y),(y\prec z \vee y\sim z)$
+\item[] $(x\prec y, y\prec z) \vee (x\prec y,y\sim x)\vee(x\sim y, y\prec z) \vee (x\sim y, y\sim z)$
+\item[] From the first and the last one we know that
+\item[Transitivity] $(x\prec z \vee x\sim z)$, which, by def
+\item[] $x\precsim z$
+\end{enumerate}
 \end{enumerate}
 
 \end{document}
