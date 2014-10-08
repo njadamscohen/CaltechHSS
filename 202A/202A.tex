@@ -3,6 +3,7 @@
 \usepackage{amsmath,amssymb,cancel}
 \usepackage{hyperref}
 \usepackage{qtree}
+\newcommand{\X}{\mathcal{X}}
 
 
 \title{SS 202A: }
@@ -121,4 +122,123 @@ So choosing an institutional structure ``inherets'' the previous preferences. So
 \item Adding \underline{institutions} can help\dots
 \item But only to a point. \underline{Assumptions} matter, and you need them.
 \end{enumerate}%test
+
+\section*{Lecture 2}
+
+
+When will underlying preferences lead to rationaliable choices?
+
+$X \equiv \text{ set of alternatives } |X| \geq 3$. 
+
+$\X \equiv$ set of all subsets $(X\setminus \emptyset)$ or $(2^\X \setminus \emptyset)$ (powerset). 
+
+$S\subset X \Leftrightarrow \in \X$.
+
+\bigskip
+
+\underline{Derive choices from Weak Preference Relation}
+
+M(R,S) = $\{x\in S:\forall y \in S, xRy\}$)\footnote{R is a preference, $S \in \X$.}
+
+Minimal expected condition ``rationality'' is that the underlying preference M(R,S) $\neq \emptyset (\forall S \in \X)$
+
+\subsection*{Three {roperties of the W.P. Relation}}
+
+
+\begin{enumerate}
+
+\item R transitive iff $\forall x,y,z \in X, xRy, yRz \Rightarrow xRz$ ``weak orders.''
+\item R is quasi-transitive $\forall x,y,z \in X, xPy, yPz \Rightarrow xPz.$
+\item Acylicity: $\forall x,y,z,\dots w,v$ then $xPyPz \dots wPv \Rightarrow xRv$
+\end{enumerate}
+
+\underline{Theorem 1.1}
+Acylity is necessary and sufficient for maximal sets to be non empty $\forall \; s\in \X$
+
+\textbf{\emph{Proof:}}
+
+\underline{Necessity} $(\Leftarrow)$ (by contradiction.)
+
+We know that the maximal set is not empty. 
+Assume $xPyPz\dots uPv$ but $\neg(xRv)$.
+
+So $\neg(vRu) \dots \neg(zRy),\neg(yRx)$ by the definition of P, and $\neg(xRv)$ by assumption.
+
+But then M(R,$ \{ \cdot,\}$) is empty. Which is a contradiction.
+
+\underline{Sufficiency}
+\begin{enumerate}
+\item If acylity is satisified, then pick $S \in \X$. 
+\item Pick an arbitrary element $x_1 \in S$.
+\item Compare $x_1$ with $S\setminus\{x_1\} $. If $x_1 R x_i (\forall i)$, we are done.
+\item If $\neg (x_1 R y) \; \exists x_2 \in S$ such that $x_2Px_1$.
+\item If $x_2 R x_i (\forall i)$, again we are done. 
+\item If not you can follow the above steps and eventually find an $x' R x_i (\forall i)$. Hence, the set is acylic.  
+\end{enumerate}
+
+
+---
+
+
+Choice function is a \underline{map} $C: \X \to \X$. That is for every sebset, $C$ gives you a subset of the subset. Ex $C(\{x,y,z\}) = \{x,y\} $.
+
+\bigskip
+
+Choice function satisfies \textbf{transitive rationalizability} iff $\exists$ a binary relation s.t. $S\in \X$, $C(S)=M(R,S)$ and moreover R is transitive.
+
+\bigskip
+
+\underline{Conditions:}
+
+
+\begin{itemize}
+
+\item Condition $\alpha$
+\item Condition $\beta$
+\item Weak Axiom of Revealed Preferences
+\end{itemize}
+
+-Does sensible things when you add and subtract alternatives.
+
+\begin{itemize}
+
+\item 
+Condition $\alpha$: condition consistency property.
+
+\[
+\forall S,T; S\subset T \;\;\;C(T) \cap S \subset C(S)
+\]
+
+If I pick a bigger set and shrink it to a smaller set with choice still there, you will still pick it in a smaller set.
+
+\item 
+Condition $\beta$: Expansion-consitency property.
+
+$S \subset T  \;\;\; C(S)\cap C(T) = \emptyset \Rightarrow C(S) \subset C(T) $
+
+
+\item WARP
+
+If $x\in C(S)$ and $y \not \in C(S)$ and $y \in C(T) \Rightarrow x \not \in T$ 
+
+\end{itemize}
+
+
+\underline{Theorem 1.4}
+
+The following three conditions are equivalent:
+
+\begin{enumerate}
+
+\item Transitive Rationalizability
+\item Condition $\alpha$ and $\beta$
+\item WARP
+\end{enumerate}
+
+\textbf{\emph{Proof:}}
+
+
+
+
+
 \end{document}
