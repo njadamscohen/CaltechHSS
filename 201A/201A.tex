@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,cancel}
 \usepackage{hyperref}
 
-\title{SS 201A: }
+\title{SS 201A: Analytical Foundations of Social Science}
 \author{George Vega Yon\and Nicholas Adams-Cohen}
 
 % Some useful macros
@@ -19,9 +19,9 @@
 \subsection*{Why study choice theory?}
 
 The agent has a utility function and maximizes $\max_{x\in X}U(x)$, where $U$ is
-a utiliy function and $X$ is the set of available actions.
+a utility function and $X$ is the set of available actions.
 
-\emph{What is the theorical foundation of this model?} is precisely what this
+\emph{What is the theoretical foundation of this model?} is precisely what this
 class is about.
 
 Our basic tool is a preference relation $\prec$ or $R$. ``$x\prec y$'': agent 
@@ -71,10 +71,10 @@ following is true:
 \noindent {\bf Example} $Y$ is the set of all living people, and $R_1:$``is shorter
 than'' ($<$).
 
-\noindent {\bf Definition} A binray relation $R$ on $Y$ is:
+\noindent {\bf Definition} A binary relation $R$ on $Y$ is:
 \begin{enumerate}
 \item Reflexive if $xRx \forall x\in Y$.
-\item Irriflexive if $x\cancel{R}x \forall x\in Y$.
+\item Irreflexive if $x\cancel{R}x \forall x\in Y$.
 \item Symmetric if $[xRy \vee yRx] \forall x,y\in Y$.
 \item Asymmetric if $[xRy\implies x\noR y \forall x,y\in Y]$.
 \item Antisymmetric if $[(xRy \wedge yRx)\implies x=y] \forall x,y\in Y$.
@@ -86,14 +86,14 @@ x,y,z\in Y$.
 
 \noindent {\bf Exercices} Show the following statements:
 \begin{enumerate}
-\item Asymetric binary relation is irriflexive.
+\item Asymmetric binary relation is irreflexive.
 
 \noindent {\bf Proof} Assume a relation which is not irreflexive, then $(x,x)\in
 R \implies (xRx\implies x\noR x)$, which is a contradiction.
 
-\item An irreflexive and transitive binray relation is asymmetric.
+\item An irreflexive and transitive binary relation is asymmetric.
 
-\noindent {\bf Proof} If $R$ were not asymetric it would be true that $xRy\implies yRx$, then, by
+\noindent {\bf Proof} If $R$ were not asymmetric it would be true that $xRy\implies yRx$, then, by
 transitivity, $xRx$, this is, reflexivity, which is a contradiction.
 
 \item A binary relation $R$ is neg. trans. iff $\forall x,y,z\in Y (xRy)\implies
@@ -107,9 +107,152 @@ xRz \vee zRy$ implies that $x\noR z \wedge z\noR y \implies x\noR y$.
 
 \noindent {\bf Sol}
 \begin{enumerate}
-\item It can't be reflexive, then is irriflexive
-\item A
+\item It can't be reflexive, ($A$ can't be taller than itself), then
+\item It is irreflexive.
+\item $R_1$ is a strict preference relation, thus it can't be symmetric, then
+\item It is asymmetric.
+\item No
+\item It is negatively transitive.
+\item Irreflexivity implies that is not connected, furthermore,
+\item It is weakly connected.
 \end{enumerate}
 \end{enumerate}
 %test
+
+\section*{Oct 1st, 2014}
+
+\subsection*{Important binary relations}
+\begin{itemize}
+\item Weak order
+\item Strict order iff weak order + weakly connected
+\item Equivalence iff reflexivity + symmetry + transitivity
+\end{itemize}
+
+\noindent {\bf Equivalence class} $R(x):=\{y\in Y: yRx \forall x\in Y\}$.
+Two equivalence classes are either identical or disjoint, i.e. $R(x)=R(y)
+\iff xRy$
+
+\noindent {\bf Proof}
+
+\begin{itemize}
+\item[\bf ($\Longleftarrow$)] Given $xRy$
+\item[] $\forall z\in R(x), zRx$
+\item[(transitivity)] $xRy\implies zRy\implies z\in R(y)$
+\item[] $\implies R(x)\subseteq R(y)$
+\item[] 
+\item[] $\forall z\in R(y), zRy$
+\item[transitivity + symmetry] $xRy\implies zRx\implies z\in R(x)$
+\item[] $\implies R(y)\subseteq R(x)$
+\item[] Then $R(y)=R(x)$
+\item[] 
+\item[\bf ($\implies$)] Given $R(x)=R(y)$
+\item[] $z\in R(x) \wedge z\in R(y)$
+\item[] $xRz \wedge yRz$
+\item[Symmetry] $xRz \wedge zRx$
+\item[Transitivity] $xRy$, now, given the previous proof
+\item[] $R(x)=R(y) \iff R(x)\subseteq R(y) \wedge R(y)\subseteq R(x)$
+\end{itemize}
+
+\noindent {\bf Equivalence class of $Y$ under $R$} $\{R(x)\}_{x\in Y}$ will be
+denoted as $Y/R$
+
+\noindent {\bf Show} $Y=\bigcup_{A\in Y/R}A$
+
+\noindent {\bf Proof}
+\begin{itemize}
+\item[\bf ($\supseteq$)] Let $A\in Y/R$
+\item[] $\implies \exists a\in Y$ s.t. $A=\{x\in Y: xRa\}$
+\item[] $\implies A\subseteq Y$ by def
+\item[] $\implies \bigcup_{x\in Y/R}A\subseteq Y$
+\item[]
+\item[\bf ($\subseteq$)] Let $z\in Y$, then
+\item[] $zRz$ by reflexivity
+\item[] $\implies z\in R(z) \in Y/R$
+\item[] $\implies z\in\bigcup_{A\in Y/R}A$
+\item[] $\implies \bigcup_{A\in Y/R}A \supseteq Y$
+\item[] Therefore $\implies Y=\bigcup_{A\in Y/R}A$
+\end{itemize}
+
+\subsection*{Preference Relation}
+
+\noindent {\bf Indifference} $x\sim y\iff x\not\prec y \wedge y\not\prec x$.This
+type of relation can be given by indifference, uncertainty or incomparability.
+
+\noindent {\bf Weak preference} $x\precsim y \iff x\prec y \vee x\sim y$
+
+\subsection*{Show}
+\begin{enumerate}
+\item $x\prec y \veebar x\sim y \veebar y\prec x$
+\item $\prec$ is transitive
+\item $\sim$ is an equivalence
+\item ($x\prec y, y\sim z)\implies x\prec z \wedge (x\sim y, y\prec z)\implies
+x\prec z$
+\item $\precsim$ is transitive and connected.
+\end{enumerate}
+
+\noindent {\bf Proof (George)}
+\begin{enumerate}
+\item $x\prec y \veebar x\sim y \veebar y\prec x$
+\begin{enumerate}
+\item[\bf (case 1)] Assume $x\prec y\wedge y\prec x$, then
+\item[Transitivity] $x\prec x$, which is a contradiction as $\prec$ is not symmetric
+\item[\bf (case 2)] Assume $x\sim y \wedge y\prec x$, then
+\item[By def] $x\sim y\implies x\not\prec y \wedge y\not\prec x$, then
+\item[] as $y\prec x$, it would be a contradiction.
+\item[\bf (case 3)] Assume $x\prec y \wedge x\sim y$
+\item[By def] $x\sim y\implies x\not\prec y \wedge y\not\prec x$, then
+\item[] as $x\prec y$, it is a contradiction. QED
+\end{enumerate}
+
+\item $\prec$ is transitive
+\begin{enumerate}
+\item[] If it is not transitive, then $\exists x,y,z$ s.t. $x\prec y\wedge y\prec
+z \implies x\not\prec z$
+\item[By def] $x\prec y\iff x\precsim y \wedge y\not\precsim x$
+\item[] $y\prec z\iff y\precsim z \wedge z\not\precsim y$
+\item[Transitivity] $x\precsim z$, which $\iff x\prec z \vee x\sim y$
+\item[] But as $x\prec z$, then $x\sim y$ would be a contradiction,
+\item[] Thereby, it should be true that $\prec$ is transitive. QED
+\end{enumerate}
+
+\item $\sim$ is an equivalence
+\begin{enumerate}
+\item[] Take any $x,y,z\in X$ s.t. $x\sim y \wedge y\sim z$, then
+\item[Transitivity] $x\sim z$, and symmetry of $\sim$ implies $z\sim x$
+\item[Transitivity] $x\sim x$, thus, as it must be true that $x=x$
+\item[] $\sim$ should be an equivalence.
+\end{enumerate}
+
+\item (i) $(x\prec y, y\sim z)\implies x\prec z$ (ii) $(x\sim y, y\prec z)\implies
+x\prec z$
+\begin{enumerate}
+\item[\bf (i)] $(x\prec y, y\sim z)\implies x\prec z$
+\item[By def] $((x\precsim y \wedge y\not\precsim x)\wedge (y\precsim z \wedge 
+z\precsim y))$
+\item[Transitivity] $x\precsim z$, which 
+\item[By def] $x\prec z \vee x\sim z$, but
+\item[Symmetry \& Transitivity] $x\sim z\implies x\sim y$, it should be
+\item[] true that $x\prec z$ QED.
+\item[]
+\item[\bf (ii)] $(x\sim y, y\prec z)\implies x\prec z$
+\item[By def] $(x\precsim y \wedge y\precsim x) \wedge (y\precsim z\wedge
+z\not\precsim y)$
+\item[Transitivity] $x\precsim z$, which
+\item[By def] $x\sim z \vee x\prec z$, but as by
+\item[Transitivity] $x\sim z\implies y\sim z$, them it should be true that
+\item[] $x\prec z$ QED.
+\end{enumerate}
+
+\item $\precsim$ is transitive and connected.
+
+\begin{enumerate}
+\item[\bf (transitive)]  $\exists x,y,z\in X$ s.t. $x\precsim y, y\precsim z$, then
+\item[by def] $(x\prec y \vee x\sim y),(y\prec z \vee y\sim z)$
+\item[] $(x\prec y, y\prec z) \vee (x\prec y,y\sim x)\vee(x\sim y, y\prec z) \vee (x\sim y, y\sim z)$
+\item[] From the first and the last one we know that
+\item[Transitivity] $(x\prec z \vee x\sim z)$, which, by def
+\item[] $x\precsim z$
+\end{enumerate}
+\end{enumerate}
+
 \end{document}
