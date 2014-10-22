@@ -1,258 +1,283 @@
 \documentclass{article}
 
-\usepackage{amsmath,amssymb,cancel}
-\usepackage{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{cancel}
 
-\title{SS 201A: Analytical Foundations of Social Science}
-\author{George Vega Yon\and Nicholas Adams-Cohen}
+% THEOREM DEFINITIONS %
+\theoremstyle{definition}
+\newtheorem{mydef}{Definition}
+\newtheorem{mythr}[mydef]{Theorem}
+\newtheorem{mycor}[mydef]{Corollary}
+\newtheorem{mypro}[mydef]{Proposition}
+\newtheorem{myoth}[mydef]{}
 
-% Some useful macros
-\def\reals{\mathbb{R}}
-\def\noR{\cancel{R}}
+% Useful macros %
+\def\sand{\;\&\;}
+\def\bspace{\mathcal{B}}
+\def\tor{\text{ or }}
+\def\tand{\text{ and }}
+\def\tnot{\text{ not }}
+\def\tiff{\text{ if and only if }}
+\def\tforall{\text{ for all }}
 
+% Format
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
 \begin{document}
-
-\maketitle
-
-\section*{Sep 29th, 2014}
-
-\subsection*{Why study choice theory?}
-
-The agent has a utility function and maximizes $\max_{x\in X}U(x)$, where $U$ is
-a utility function and $X$ is the set of available actions.
-
-\emph{What is the theoretical foundation of this model?} is precisely what this
-class is about.
-
-Our basic tool is a preference relation $\prec$ or $R$. ``$x\prec y$'': agent 
-prefers $y$ to $x$. More formally, the result we are going to obtain is: 
-``$\prec$'' satisfies  axioms 1,...,$n$ iff there exists a function 
-$U:X\to\reals$ s.t. $U(x)<U(y) \iff x\prec y$.
-
-\begin{align*}
-l&=(x_1;p;x_2;1-p) \\
-r&=(y_1;q;y_2;1-q)
-\end{align*}
-
-$l\prec r \iff pU(x_1) + (1-p)U(x_2) < qU(y_1) + (1-q)U(y_2)$: von 
-Neumann-Morgenstenn Expected utility theory.
-
-\subsection*{Representation of Weak Order}
-
-Assuming $X$ is a countable set:
-
+\section{Binary relations}
+\noindent {\bf Definition } A binary relation $R$ on $Y$ is
 \begin{itemize}
-\item $\prec$ is \underline{weak order} iff $\exists U:X\to\reals$ s.t. $x\prec y
-\iff U(x)<U(y)$.
-
-\item \underline{Binary relation} on a set $Y$ is a set of ordered pairs $(x,y)$
-with $x,y\in Y$.
-
-\item \underline{Notation}:
-
-\begin{align*}
-R&:\text{Binary relation} \\
-\prec&:\text{Preference relation}\\\\
-xRy&: \text{ means }(x,y) \in R \\
-x\noR y&:\text{ means }(x,y)\notin R
-\end{align*}
-
-\item \underline{Remark} if $R$ is a binary relation on $Y$, exactly one of the
-following is true:
-\begin{enumerate}
-\item $xRy \wedge yRx$ or 
-\item $xRy \wedge y\noR x$ or 
-\item $x\noR y \wedge yRx$ or 
-\item $x\noR y \wedge y\noR x$
-
-\end{enumerate}
+\item {\bf Reflexive} if $xRx$ for every $x\in Y$,
+\item {\bf Irreflexive} if not $xRx$ for every $x\in Y$,
+\item {\bf Symmetric} if $xRy\implies yRx$ for every $x,y\in Y$,
+\item {\bf Asymmetric} if $xRy\implies\text{ not }yRx$ for every $x,y \in Y$,
+\item {\bf Antisymmetric} if $(xRy,yRx)\implies x=y$ for every $x,y\in Y$,
+\item {\bf Transitive} if $(xRy,yRz)\implies xRz$ for every $x,y,z\in Y$,
+\item {\bf Negatively transitive} if $(\text{not }xRy,\text{ not }yRz)\implies\text{ not }xRz$, for every $x,y,z\in Y$,
+\item {\bf Connected} if $xRy$ or $yRx$ for every $x,y\in Y$,
+\item {\bf Weakly connected} if $x\not=y\implies (xRy\text{ or }yRx)$ for all $x,y\in Y$.
 \end{itemize}
 
-\noindent {\bf Example} $Y$ is the set of all living people, and $R_1:$``is shorter
-than'' ($<$).
+\noindent{\bf Remark:}
 
-\noindent {\bf Definition} A binary relation $R$ on $Y$ is:
-\begin{enumerate}
-\item Reflexive if $xRx \forall x\in Y$.
-\item Irreflexive if $x\cancel{R}x \forall x\in Y$.
-\item Symmetric if $[xRy \vee yRx] \forall x,y\in Y$.
-\item Asymmetric if $[xRy\implies x\noR y \forall x,y\in Y]$.
-\item Antisymmetric if $[(xRy \wedge yRx)\implies x=y] \forall x,y\in Y$.
-\item Negatively transitive if $[(x\noR y \wedge y\noR z)\implies x\noR z] \forall
-x,y,z\in Y$.
-\item Connected (complete) if $[xRy \vee yRx] \forall x,y\in Y$.
-\item Weakly connected if $x\not=y\implies xRy \vee yRx\forall x,y\in Y$.
-\end{enumerate}
-
-\noindent {\bf Exercices} Show the following statements:
-\begin{enumerate}
-\item Asymmetric binary relation is irreflexive.
-
-\noindent {\bf Proof} Assume a relation which is not irreflexive, then $(x,x)\in
-R \implies (xRx\implies x\noR x)$, which is a contradiction.
-
-\item An irreflexive and transitive binary relation is asymmetric.
-
-\noindent {\bf Proof} If $R$ were not asymmetric it would be true that $xRy\implies yRx$, then, by
-transitivity, $xRx$, this is, reflexivity, which is a contradiction.
-
-\item A binary relation $R$ is neg. trans. iff $\forall x,y,z\in Y (xRy)\implies
-(xRz \vee zRy)$.
-
-\noindent {\bf Proof} By the conterpositive of $x\noR y \wedge y\noR z\implies x\noR z$, we know that
-$xRz\implies xRy \vee yRz$. At the same time the counterpositive of $xRy\implies
-xRz \vee zRy$ implies that $x\noR z \wedge z\noR y \implies x\noR y$.
-
-\item Find all the properties of $R_1$ (shorter than).
-
-\noindent {\bf Sol}
-\begin{enumerate}
-\item It can't be reflexive, ($A$ can't be taller than itself), then
-\item It is irreflexive.
-\item $R_1$ is a strict preference relation, thus it can't be symmetric, then
-\item It is asymmetric.
-\item No
-\item It is negatively transitive.
-\item Irreflexivity implies that is not connected, furthermore,
-\item It is weakly connected.
-\end{enumerate}
-\end{enumerate}
-%test
-
-\section*{Oct 1st, 2014}
-
-\subsection*{Important binary relations}
 \begin{itemize}
-\item Weak order
-\item Strict order iff weak order + weakly connected
-\item Equivalence iff reflexivity + symmetry + transitivity
-\end{itemize}
+\item An asymmetric binary relation is irreflexive.
 
-\noindent {\bf Equivalence class} $R(x):=\{y\in Y: yRx \forall x\in Y\}$.
-Two equivalence classes are either identical or disjoint, i.e. $R(x)=R(y)
-\iff xRy$
+\noindent{\bf Proof} 
+
+Proof by contradiction, for any $x\in Y$ we define $xRx\implies$ not $xRx$, which is a contradiction. $\Box$
+
+\item An irriflexive and transitive binary relation is asymmetric.
 
 \noindent {\bf Proof}
 
-\begin{itemize}
-\item[\bf ($\Longleftarrow$)] Given $xRy$
-\item[] $\forall z\in R(x), zRx$
-\item[(transitivity)] $xRy\implies zRy\implies z\in R(y)$
-\item[] $\implies R(x)\subseteq R(y)$
-\item[] 
-\item[] $\forall z\in R(y), zRy$
-\item[transitivity + symmetry] $xRy\implies zRx\implies z\in R(x)$
-\item[] $\implies R(y)\subseteq R(x)$
-\item[] Then $R(y)=R(x)$
-\item[] 
-\item[\bf ($\implies$)] Given $R(x)=R(y)$
-\item[] $z\in R(x) \wedge z\in R(y)$
-\item[] $xRz \wedge yRz$
-\item[Symmetry] $xRz \wedge zRx$
-\item[Transitivity] $xRy$, now, given the previous proof
-\item[] $R(x)=R(y) \iff R(x)\subseteq R(y) \wedge R(y)\subseteq R(x)$
+Proof by contradiction, assume is not asymmetric, then for any $x\in Y$ $xRy$ and $yRx$,
+now, take any $z$ s.t. $zRx$ and $xRz$, then, by transitivity we can get $zRy$ and $yRz$,
+which leads us to $zRz$, but as $R$ is irreflexive then we have a contradiction.$\Box$
+
+\item A binary relation  $R$ is negatively transitive iff for all $x,y,z\in Y$ $xRy\implies (xRz\text{ or }zRy)$
+
+{\bf Proof}
+\begin{align*}
+\tnot xRy\tand \tnot yRz &\implies \tnot xRz \\
+\text{Taking its contrapositive}\\
+xRz&\implies xRy\tor yRz,
+\end{align*}
+
+which is what we where looking for. $\Box$
 \end{itemize}
 
-\noindent {\bf Equivalence class of $Y$ under $R$} $\{R(x)\}_{x\in Y}$ will be
-denoted as $Y/R$
+\section{Weak order}
 
-\noindent {\bf Show} $Y=\bigcup_{A\in Y/R}A$
-
-\noindent {\bf Proof}
+\noindent {\bf Definition} A binary relation $R$ on a set $Y$ is
 \begin{itemize}
-\item[\bf ($\supseteq$)] Let $A\in Y/R$
-\item[] $\implies \exists a\in Y$ s.t. $A=\{x\in Y: xRa\}$
-\item[] $\implies A\subseteq Y$ by def
-\item[] $\implies \bigcup_{x\in Y/R}A\subseteq Y$
-\item[]
-\item[\bf ($\subseteq$)] Let $z\in Y$, then
-\item[] $zRz$ by reflexivity
-\item[] $\implies z\in R(z) \in Y/R$
-\item[] $\implies z\in\bigcup_{A\in Y/R}A$
-\item[] $\implies \bigcup_{A\in Y/R}A \supseteq Y$
-\item[] Therefore $\implies Y=\bigcup_{A\in Y/R}A$
+\item A {\bf Weak order} iff $R$ is asymmetric and negatively transitive,
+\item A {\bf Strict order} iff $R$ is weakly connected weak order,
+\item An \textbf{Equivalence} iff $R$ is reflexive, symmetric and transitive.
+\item A {\bf Strict partial order} iff $R$ is reflexive and transitive (from section \ref{sec:strictpartialorder}).
 \end{itemize}
 
-\subsection*{Preference Relation}
+\noindent {\bf Definition} Let $R$ be an equivalence class on $Y$. The set
 
-\noindent {\bf Indifference} $x\sim y\iff x\not\prec y \wedge y\not\prec x$.This
-type of relation can be given by indifference, uncertainty or incomparability.
+\begin{equation*}
+R(x)=\sim(x)=\{y\in Y| \forall x\in Y, yRx \},
+\end{equation*}
 
-\noindent {\bf Weak preference} $x\precsim y \iff x\prec y \vee x\sim y$
+is called the equivalence class generated by $x$
 
-\subsection*{Show}
+\noindent{\bf Remark:}
+\begin{itemize}
+\item $R(x)=R(y)$ iff $xRy$
+
+{\bf Proof}
+
+{\bf ($\Rightarrow$)} $R(x)=R(y)$ implies $xRy$
+
+By direct proof, by definition $\forall x' \in R(x)$ and $\forall y'\in R(y)$ implies $x'Rx$ and $y'Ry$ respectively, furthermore, as both sets are equal, then $x'Ry$. Now, as $R$ is symmetric we also know that $xRx'$ Therefore, by transitivity of $R$ we get $xRy$. $\Box$
+
+{\bf ($\Leftarrow$)} $xRy$ implies $R(x)=R(y)$
+
+By direct proof, let $R(x), R(y) \subset Y$ be the respective equivalence classes of $x$ and $y$. For any member $z$ of $R(x)$, by definition we know that $xRz$ and by symmetry of $R$ that $zRx$. Now, $R$ transitive implies that $zRy$, and again, by symmetry of $R$, $yRz$ which is a member of $R(y)$, thus, $R(x)\subseteq R(y)$. Repeat the same steps for any member of $R(y)$ and we will get $R(y)\subseteq R(x)$. Therefore, $R(x)=R(y)$. $\Box$
+
+\item Any equivalence classes are either identical or disjoin
+
+{\bf Proof}
+
+Proof by contradiction. Assume not, then for any two $x,y\in Y$, let them have their equivalence classes $R(x)$ and $R(y)$ s.t. $R(x)\cap R(y)\not=\emptyset$ and $R(x)\not=R(y)$. Then, there should be some $z\in R(x)\cap R(y)$ s.t. $xRz$ and $yRz$, furthermore, by asymmetry and transitivity of $R$, $\forall w\in R(x), wRz$ and $zRw$ as well. This way, $R$ transitive implies that $R(x)\subseteq R(y)$, and what's more, by applying the same logic with any element of $R(y)$ we get $R(y)\subseteq R(x)$. Therefore, $R(x)=R(y)$, which is a contradiction. $\Box$
+
+\item[] Notation: We denote $\{R(x)\}_{x\in Y}$ by $Y/R$
+\item $Y/R$ is a partition of $Y$, that is (i) for any $A,A'\in Y/R$, if $A\not=A'$ then $A\cap A'=\emptyset$, (ii) $Y=\cup_{A\in Y/R}A$.
+
+{\bf Proof}
+
+{\bf (i)} Already proof. $\Box$
+
+{\bf (ii) ($\Rightarrow$)} $Y\subseteq \cup_{A\in Y/R}A$
+
+{\bf (ii) ($\Leftarrow$)} $\cup_{A\in Y/R}A \subseteq Y$
+
+
+\end{itemize}
+
+\section{Preference Relation}
+
+Consider a set $X$ of alternatives and binary relation $\prec$ on $X$. We interpret $x\prec y$ as ``$x$ is less preferred than $y$''. We define the indifference as the absence of strict preferences
+
+\begin{equation*}
+x\sim y \tiff (\tnot x\prec y, \tnot y\prec x)
+\end{equation*}
+
+\noindent {\bf Definition}
+
+\begin{equation*}
+x\precsim y\iff x\prec y \tor x\sim y
+\end{equation*}
+
+\noindent {\bf Theorem 1} {\it Suppose that $\prec$ on $X$ is a weak order. Then}
+
 \begin{enumerate}
-\item $x\prec y \veebar x\sim y \veebar y\prec x$
-\item $\prec$ is transitive
-\item $\sim$ is an equivalence
-\item ($x\prec y, y\sim z)\implies x\prec z \wedge (x\sim y, y\prec z)\implies
-x\prec z$
+\item Exactly one of $x\prec y,x\sim y, y\prec x$ holds,
+
+{\bf Proof} By definition we know that if $\sim$ where the case, then neither $x\prec y$ nor $y\prec x$ would hold.
+At the same time, by its contrapositive, $\sim$ won't hold if either $x\prec y$ or $y\prec x$ holds, but, as $\prec$ is a weak order then we know that it is asymmetric, thus $x\prec y\implies \tnot y\prec x$ and vice versa. Therefore, only one of these can hold. $\Box$
+
+\item $\prec$ is transitive,
+
+{\bf Proof} If transitive, then there must exists $x,y,z\in X$ s.t. $x\prec y,y\prec z\implies x\prec z$. Now, assume not, then $\tnot x\prec z$. $\prec$ asymmetric implies that $\tnot z\prec y$, then, by negatively transitive we have $\tnot x\prec z,\tnot z\prec y\implies \tnot x\prec y$, which is a contradiction. $\Box$
+
+\item $\sim$ is an equivalence,
+
+{\bf Proof} We need to show that $\sim$ is reflexive, symmetric and transitive.
+
+{\bf (symmetric)} Let $x,y\in X$ s.t. $\tnot x\prec y$ and $\tnot y\prec x$, then $x\sim y$. Now, by changing places, $\tnot y\prec x$ and $\tnot x\prec y$, then $y\sim x$. Thereby $\sim$ is symmetric. $\Box$
+
+{\bf (transitive)} Assume $z\in X$ s.t. $x\sim y \tand y\sim z$. Now, by definition $(\tnot x\prec y,\tnot y\prec x)$ and $(\tnot y\prec z,\tnot z\prec y)$. By negatively transitivity of $\prec$ we have $\tnot x\prec z\tand \tnot z\prec x$, thus, by definition of $\sim$, $x\sim z$. $\Box$
+
+{\bf (reflexive)} Let $x,y,z\in X$ s.t. $x\sim y$ and $x\sim z$. Then, by symmetry of $\sim$ we have $z\sim x$. Finally, $\sim$ transitive implies $x\sim x$. $\Box$
+
+\item $(x\prec y,y\sim z)\implies x\prec z$ and $(x\sim y,y\prec z)\implies x\prec z$,
+
+{\bf Proof}
+
+{\bf ($(x\prec y,y\sim z)\implies x\prec z$)} By definition of $\sim$ we have $y\sim z\implies (\tnot y\prec z,\tnot z\prec y)$, now, since $x\prec y$, then asymmetry of $\prec$ implies  $\tnot y\prec x$. Furthermore, by negatively transitivity, we have $\tnot z\prec y,\not y\prec z\implies \tnot z\prec x$. Thereby, by the contrapositive of asymmetry we have $\tnot z\prec x\implies x\prec z$. $\Box$
+
+{\bf ($(x\sim y,y\prec z)\implies x\prec z$)} By definition of $\sim$ we have $(\tnot x\prec y,\tnot y\prec x)$. Asymmetry implies that $\tnot z\prec y$, and negative transitivity that $\tnot z\prec y,\tnot y\prec x\implies \tnot z\prec x$, which by asymmetry implies $x\prec z$. $\Box$
+
+
+
 \item $\precsim$ is transitive and connected.
+
+{\bf Proof}
+
+({\bf $\precsim$ transitive}) Let $x,y,z\in X$ s.t. $x\precsim y$ and $y\precsim z$, then, by definition of $\precsim$ we have $(x\prec y\tor x\sim y)$ and $(y\prec z\tor y\sim z)$, then we have 4 cases:
+
+\begin{itemize}
+\item $x\prec y\tand y\prec z$, which by transitivity of $\prec$ implies $x\prec z$,
+\item $x\prec y\tand y\sim z$, which by proof implies $x\prec z$,
+\item $x\sim y\tand y\prec z$, which by proof implies $x\prec z$
+\item $x\sim y\tand y\sim z$, which by transitivity of $\sim$ implies $x\sim z$
+\end{itemize}
+
+This way, we have $(x\prec z\tor x\sim z)\implies x\precsim z$. $\Box$
+
+({\bf $\precsim$ connected}) If connected, then either $x\precsim y$ or $y\precsim x$, which by definition implies $(x\prec y\tor y\sim x)\tor(y\prec x\tor y\sim x)$. Now, by symmetry of $\sim$, we have $x\prec y\tor y\prec x\tor x\sim y$, which was proved on theorem 1.1. $\Box$
+
+\item Let $\prec'$ on $X/\sim$ defined by
+
+\begin{equation*}
+a\prec' b \iff x\prec y\text{ for some $x\in a$ and $y\in b$}
+\end{equation*}
+
+Then $\prec'$ on $X/\sim$ is a strict order.
+
+{\bf Proof} Need to show that $\prec'$ on $X/\sim$ is weakly connected, weak order (asymmetric and negatively transitive).
+
+{\bf (weakly connected)} 
+
+{\bf (asymmetric)} Assume $a\prec' b$, then, for some $x\in a, y\in b$ we have $x\prec y$; furthermore, as $\forall x'\in a, x\sim x'$ and $\forall y'\in b, y\sim y'$, by transitivity of $\sim$ we have $x'\prec y'$. Now, as $\prec$ is asymmetric, we know that $\tnot y'\prec x'$. Finally, by contrapositive of $\prec'$, $\tnot y'\prec' x\implies \tnot b\prec' a$. $\Box$
+
+{\bf (negatively transitive)} Let $\tnot a\prec' b$ and$\tnot b\prec' c$. Now, for some $x\in a, y\in b\tand z\in c$ we have the following: $\tnot x\prec y\tand\tnot y\prec z$, then by $\prec$ negatively transitive we have not $x\prec z$. Furthermore, as $\forall x'\in a, x'\sim x$ and $\forall y'\in c, z\sim z'$, and transitivity of $\sim$, we have not $x'\prec z'$, therefore, by the contrapositive of $\prec'$, not $x'\prec z'\implies\tnot a\prec' c$. $\Box$
 \end{enumerate}
 
-\noindent {\bf Proof (George)}
-\begin{enumerate}
-\item $x\prec y \veebar x\sim y \veebar y\prec x$
-\begin{enumerate}
-\item[\bf (case 1)] Assume $x\prec y\wedge y\prec x$, then
-\item[Transitivity] $x\prec x$, which is a contradiction as $\prec$ is not symmetric
-\item[\bf (case 2)] Assume $x\sim y \wedge y\prec x$, then
-\item[By def] $x\sim y\implies x\not\prec y \wedge y\not\prec x$, then
-\item[] as $y\prec x$, it would be a contradiction.
-\item[\bf (case 3)] Assume $x\prec y \wedge x\sim y$
-\item[By def] $x\sim y\implies x\not\prec y \wedge y\not\prec x$, then
-\item[] as $x\prec y$, it is a contradiction. QED
-\end{enumerate}
+\section{An Order Preserving Utility Function}
 
-\item $\prec$ is transitive
-\begin{enumerate}
-\item[] If it is not transitive, then $\exists x,y,z$ s.t. $x\prec y\wedge y\prec
-z \implies x\not\prec z$
-\item[By def] $x\prec y\iff x\precsim y \wedge y\not\precsim x$
-\item[] $y\prec z\iff y\precsim z \wedge z\not\precsim y$
-\item[Transitivity] $x\precsim z$, which $\iff x\prec z \vee x\sim y$
-\item[] But as $x\prec z$, then $x\sim y$ would be a contradiction,
-\item[] Thereby, it should be true that $\prec$ is transitive. QED
-\end{enumerate}
+\noindent {\bf Theorem 2.} If $\prec$ on $X$ is a weak order and $X/\sim$ is countable then there exists a real-valued function $u$ on $X$ s.t. for all $x,y\in X$,
 
-\item $\sim$ is an equivalence
-\begin{enumerate}
-\item[] Take any $x,y,z\in X$ s.t. $x\sim y \wedge y\sim z$, then
-\item[Transitivity] $x\sim z$, and symmetry of $\sim$ implies $z\sim x$
-\item[Transitivity] $x\sim x$, thus, as it must be true that $x=x$
-\item[] $\sim$ should be an equivalence.
-\end{enumerate}
+\begin{equation*}
+x\prec y\iff u(x)<u(y)
+\end{equation*}
 
-\item (i) $(x\prec y, y\sim z)\implies x\prec z$ (ii) $(x\sim y, y\prec z)\implies
-x\prec z$
-\begin{enumerate}
-\item[\bf (i)] $(x\prec y, y\sim z)\implies x\prec z$
-\item[By def] $((x\precsim y \wedge y\not\precsim x)\wedge (y\precsim z \wedge 
-z\precsim y))$
-\item[Transitivity] $x\precsim z$, which 
-\item[By def] $x\prec z \vee x\sim z$, but
-\item[Symmetry \& Transitivity] $x\sim z\implies x\sim y$, it should be
-\item[] true that $x\prec z$ QED.
-\item[]
-\item[\bf (ii)] $(x\sim y, y\prec z)\implies x\prec z$
-\item[By def] $(x\precsim y \wedge y\precsim x) \wedge (y\precsim z\wedge
-z\not\precsim y)$
-\item[Transitivity] $x\precsim z$, which
-\item[By def] $x\sim z \vee x\prec z$, but as by
-\item[Transitivity] $x\sim z\implies y\sim z$, them it should be true that
-\item[] $x\prec z$ QED.
-\end{enumerate}
+\noindent {\bf Definition:} The utility function $u$ is called a utility function of $\prec$.
 
-\item $\precsim$ is transitive and connected.
+\noindent {\bf Remark:} For any strictly increasing function $f$, if $u$ is utility function of $\prec$, then $f(u)$ is also a utility function of $\prec$.
+
+\noindent {\bf Remark:} If $\prec$ on $X$ has a utility function $u$, then $\prec$ is a weak order.
+
+\section{Preference as Strict Partial Order\label{sec:strictpartialorder}}
+
+\noindent{\bf Definition} A briefly relation $R$ on a set $Y$ is a strict partial order iff it is reflexive and transitive.
+
+\noindent{\bf Remark:} Remember that irreflexivity and negatively transitivity of $\prec$ implies transitivity of $\sim$.
+
+\noindent{\bf Remark:} The irreflexivity and the transitivity of $\prec$ does not imply the transitivity of $\sim$.
+
+\noindent{\bf Remark:} $x\approx y\implies x\sim y$
+
+\noindent{\bf Definition:}
+
+\begin{equation*}
+x\approx y\iff (x\sim z\iff y\sim z\tforall z\in X)
+\end{equation*}
+
+\noindent{\bf Theorem 3.} Suppose $\prec$ on $X$ is a strict partial order, being irreflexive and transitive. Then
 
 \begin{enumerate}
-\item[\bf (transitive)]  $\exists x,y,z\in X$ s.t. $x\precsim y, y\precsim z$, then
-\item[by def] $(x\prec y \vee x\sim y),(y\prec z \vee y\sim z)$
-\item[] $(x\prec y, y\prec z) \vee (x\prec y,y\sim x)\vee(x\sim y, y\prec z) \vee (x\sim y, y\sim z)$
-\item[] From the first and the last one we know that
-\item[Transitivity] $(x\prec z \vee x\sim z)$, which, by def
-\item[] $x\precsim z$
+\item exactly one of $x\prec y,y\prec x,x\approx y, (x\sim y,\tnot x\approx y)$ holds for each $x,y\in X$,
+\item $\approx$ is an equivalence,
+\item $(x\prec y,y\approx z)\implies x\prec z$ and $(x\approx y,y\sim z)\implies x\prec z$,
+\item Let $\prec^*$ defined on $X/\approx$ by
+\begin{equation*}
+a\prec^* b\iff x\prec y\text{ for some $x\in a$ and $y\in b$}
+\end{equation*}
+
+Then, $\prec^*$ on $X/\approx$ is a strict partial order.
 \end{enumerate}
+
+\section{Zorn's Lemma and Szpilrajn's Extension Theorem}
+
+\noindent{\bf Theorem 4.} If $\prec^*$ is a strict partial order on a set $Y$, then there is a strict order $\prec^\circ$ on $Y$ that includes $\prec^*$, so that
+
+\begin{equation*}
+x\prec^* y\implies x\prec^\circ y
+\end{equation*}
+
+\noindent {\bf Zorn's Lemma:} Suppose that (i) $P$ on $Y$ is a strict partial order and (ii) for any subset $Z$ of $Y$ on which $P$ is a strict order, there is a $y\in Y$ s.t.
+
+\begin{equation*}
+zPy\tor z=y\tforall z\in Z.
+\end{equation*}
+
+Then, there is a $y^*\in Y$ s.t. $y^*Px$ for no $x\in Y$.
+
+\def\precs{\prec^\circ}
+
+\noindent{\bf Remark} Suppose $\prec^\circ$ is a strict partial order. If $\prec^\circ$ is weakly connected, then $\prec^\circ$ is a strict order.
+
+\noindent{\bf Proof} We need to show that if $\prec^\circ$ is reflexive and transitive, by adding weakly connected we must obtain a strict order, this is weakly connected weak order (asymmetric and negatively transitive).
+
+\noindent{\bf (asymmetric)} By contradiction, assume not, then for some $x,y\in X$ we should have $x\precs y$ and $y\precs x$, then, by transitivity of $\precs$ we get $x\precs x$, which contradicts weakly connected. $\Box$
+
+\noindent{\bf (negatively transitive)} By contradiction assume not, then for some $x,y,z\in X$ we have $(\tnot x\precs y,\tnot y\precs z)\implies x\precs z$. Now, by asymmetry of $\precs$ we have $y\precs x$ and $z\precs y$; then, by weakly connected we know that $x\not=y\not=z$, and what's more, either $x\precs z$ or $z\precs x$, now, WLOG, assume the first, then, by transitivity of $\precs$ we have $y\precs z$, which is a contradiction. $\Box$
+
+\section{Utility Representation for Strict Partial Order}
+
+\noindent{\bf Theorem 5.} If $\prec$ on $X$ is a strict partial order and $X/\approx$ is countable then there is a real valued function $u$ on $X$ s.t. for all $x,y\in X$
+
+\begin{enumerate}
+\item $x\prec y\implies u(x)<u(y)$,
+\item $x\approx y\implies u(x)=u(y)$.
 \end{enumerate}
 
 \end{document}
