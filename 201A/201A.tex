@@ -20,14 +20,22 @@
 \def\tnot{\text{ not }}
 \def\tiff{\text{ if and only if }}
 \def\tforall{\text{ for all }}
+\def\tif{\text{ if }}
 
 % Format
 \usepackage[margin=1in]{geometry}
-\usepackage{setspace}
-\onehalfspacing
+%\usepackage{setspace}
+%\onehalfspacing
+
+\usepackage{parskip}
+\setlength{\parindent}{.7cm}
+
+\setlength{\parindent}{0cm} % Removes indenting
+
+
 \begin{document}
 \section{Binary relations}
-\noindent {\bf Definition } A binary relation $R$ on $Y$ is
+{\bf Definition } A binary relation $R$ on $Y$ is
 \begin{itemize}
 \item {\bf Reflexive} if $xRx$ for every $x\in Y$,
 \item {\bf Irreflexive} if not $xRx$ for every $x\in Y$,
@@ -51,7 +59,7 @@ Proof by contradiction, for any $x\in Y$ we define $xRx\implies$ not $xRx$, whic
 
 \item An irriflexive and transitive binary relation is asymmetric.
 
-\noindent {\bf Proof}
+{\bf Proof}
 
 Proof by contradiction, assume is not asymmetric, then for any $x\in Y$ $xRy$ and $yRx$,
 now, take any $z$ s.t. $zRx$ and $xRz$, then, by transitivity we can get $zRy$ and $yRz$,
@@ -71,15 +79,15 @@ which is what we where looking for. $\Box$
 
 \section{Weak order}
 
-\noindent {\bf Definition} A binary relation $R$ on a set $Y$ is
+{\bf Definition} A binary relation $R$ on a set $Y$ is
 \begin{itemize}
 \item A {\bf Weak order} iff $R$ is asymmetric and negatively transitive,
 \item A {\bf Strict order} iff $R$ is weakly connected weak order,
 \item An \textbf{Equivalence} iff $R$ is reflexive, symmetric and transitive.
-\item A {\bf Strict partial order} iff $R$ is reflexive and transitive (from section \ref{sec:strictpartialorder}).
+\item A {\bf Strict partial order} iff $R$ is irreflexive and transitive (from section \ref{sec:strictpartialorder})\footnote{This also implies it is asymmetric}.
 \end{itemize}
 
-\noindent {\bf Definition} Let $R$ be an equivalence class on $Y$. The set
+{\bf Definition} Let $R$ be an equivalence class on $Y$. The set
 
 \begin{equation*}
 R(x)=\sim(x)=\{y\in Y| \forall x\in Y, yRx \},
@@ -103,9 +111,7 @@ By direct proof, let $R(x), R(y) \subset Y$ be the respective equivalence classe
 
 \item Any equivalence classes are either identical or disjoin
 
-{\bf Proof}
-
-Proof by contradiction. Assume not, then for any two $x,y\in Y$, let them have their equivalence classes $R(x)$ and $R(y)$ s.t. $R(x)\cap R(y)\not=\emptyset$ and $R(x)\not=R(y)$. Then, there should be some $z\in R(x)\cap R(y)$ s.t. $xRz$ and $yRz$, furthermore, by asymmetry and transitivity of $R$, $\forall w\in R(x), wRz$ and $zRw$ as well. This way, $R$ transitive implies that $R(x)\subseteq R(y)$, and what's more, by applying the same logic with any element of $R(y)$ we get $R(y)\subseteq R(x)$. Therefore, $R(x)=R(y)$, which is a contradiction. $\Box$
+{\bf Proof} Assume not, then for any two $x,y\in Y$, let them have their equivalence classes $R(x)$ and $R(y)$ s.t. $R(x)\cap R(y)\not=\emptyset$ and $R(x)\not=R(y)$. Then, there should be some $z\in R(x)\cap R(y)$ s.t. $xRz$ and $yRz$, furthermore, by asymmetry and transitivity of $R$, $\forall w\in R(x), wRz$ and $zRw$ as well. This way, $R$ transitive implies that $R(x)\subseteq R(y)$, and what's more, by applying the same logic with any element of $R(y)$ we get $R(y)\subseteq R(x)$. Therefore, $R(x)=R(y)$, which is a contradiction. $\Box$
 
 \item[] Notation: We denote $\{R(x)\}_{x\in Y}$ by $Y/R$
 \item $Y/R$ is a partition of $Y$, that is (i) for any $A,A'\in Y/R$, if $A\not=A'$ then $A\cap A'=\emptyset$, (ii) $Y=\cup_{A\in Y/R}A$.
@@ -129,13 +135,13 @@ Consider a set $X$ of alternatives and binary relation $\prec$ on $X$. We interp
 x\sim y \tiff (\tnot x\prec y, \tnot y\prec x)
 \end{equation*}
 
-\noindent {\bf Definition}
+{\bf Definition}
 
 \begin{equation*}
 x\precsim y\iff x\prec y \tor x\sim y
 \end{equation*}
 
-\noindent {\bf Theorem 1} {\it Suppose that $\prec$ on $X$ is a weak order. Then}
+{\bf Theorem 1} {\it Suppose that $\prec$ on $X$ is a weak order. Then}
 
 \begin{enumerate}
 \item Exactly one of $x\prec y,x\sim y, y\prec x$ holds,
@@ -203,29 +209,28 @@ Then $\prec'$ on $X/\sim$ is a strict order.
 
 \section{An Order Preserving Utility Function}
 
-\noindent {\bf Theorem 2.} If $\prec$ on $X$ is a weak order and $X/\sim$ is countable then there exists a real-valued function $u$ on $X$ s.t. for all $x,y\in X$,
+{\bf Theorem 2.} If $\prec$ on $X$ is a weak order and $X/\sim$ is countable then there exists a real-valued function $u$ on $X$ s.t. for all $x,y\in X$,
 
 \begin{equation*}
 x\prec y\iff u(x)<u(y)
 \end{equation*}
 
-\noindent {\bf Definition:} The utility function $u$ is called a utility function of $\prec$.
+{\bf Definition:} The utility function $u$ is called a utility function of $\prec$.
 
-\noindent {\bf Remark:} For any strictly increasing function $f$, if $u$ is utility function of $\prec$, then $f(u)$ is also a utility function of $\prec$.
+{\bf Remark:} For any strictly increasing function $f$, if $u$ is utility function of $\prec$, then $f(u)$ is also a utility function of $\prec$.
 
-\noindent {\bf Remark:} If $\prec$ on $X$ has a utility function $u$, then $\prec$ is a weak order.
+{\bf Remark:} If $\prec$ on $X$ has a utility function $u$, then $\prec$ is a weak order.
 
 \section{Preference as Strict Partial Order\label{sec:strictpartialorder}}
 
-\noindent{\bf Definition} A briefly relation $R$ on a set $Y$ is a strict partial order iff it is reflexive and transitive.
+\noindent{\bf Definition} A briefly relation $R$ on a set $Y$ is a strict partial order iff it is irreflexive and transitive.
 
 \noindent{\bf Remark:} Remember that irreflexivity and negatively transitivity of $\prec$ implies transitivity of $\sim$.
 
 \noindent{\bf Remark:} The irreflexivity and the transitivity of $\prec$ does not imply the transitivity of $\sim$.
 
-\noindent{\bf Remark:} $x\approx y\implies x\sim y$
-
-\noindent{\bf Definition:}
+\noindent{\bf Definition\footnote{
+Its contrapositive can be defined as $\tnot x\approx y \iff (\exists z\in X)\text{ s.t. }[(x\sim z,\tnot y\sim z)\tor(\tnot x\sim z,y\sim z)]$}:}
 
 \begin{equation*}
 x\approx y\iff (x\sim z\iff y\sim z\tforall z\in X)
@@ -235,14 +240,52 @@ x\approx y\iff (x\sim z\iff y\sim z\tforall z\in X)
 
 \begin{enumerate}
 \item exactly one of $x\prec y,y\prec x,x\approx y, (x\sim y,\tnot x\approx y)$ holds for each $x,y\in X$,
+
+{\bf Proof} 
+
 \item $\approx$ is an equivalence,
-\item $(x\prec y,y\approx z)\implies x\prec z$ and $(x\approx y,y\sim z)\implies x\prec z$,
+
+{\bf Proof} In order to be an equivalence, it must be symmetric, transitive and reflexive.
+
+{\bf (Symmetry)} $x\approx y\implies (x\sim z\iff y\sim z)$, which implies that $(y\sim z\iff x\sim z)$, then, by definition of $\approx$ we have $y\approx x$. $\Box$
+
+{\bf (Transitivity)} By definition of $\approx$ we know that $x\approx y$ implies that $(x\sim w\iff y\sim w\tforall w\in X)$ and $y\approx z$ implies $(z\sim w'\iff y\sim w'\tforall w'\in X)$, thus it must be true that $w\equiv w'$, this is $z\sim w\iff y\sim w$; therefore, we have $x\sim w\iff y\sim w \iff z\sim w$, which implies $x\approx z$. $\Box$
+
+{\bf (Reflexivity)} Let $x,y \in X$ s.t. $x\approx y$, then, by symmetry of $\approx$ we know that $y\approx x$, furthermore, by $\approx$ transitive we have $x\approx y,y\approx x\implies x\approx x$, thereby, $\approx$ is reflexive. $\Box$
+
+
+\item (i) $(x\prec y,y\approx z)\implies x\prec z$ and (ii) $(x\approx y,y\prec z)\implies x\prec z$,
+
+{\bf Proof (i)} By theorem 3.1 we know that exclusively one of the following holds:
+
+\begin{itemize}
+\item[] Case 1) $z\prec x$. By transitivity of $\prec$ it implies that $z\prec y$. A contradiction.
+\item[] Case 2) $x\approx z$. By symmetry and transitivity of $\approx$, it implies that $x\approx y$. A contradiction.
+\item[] Case 3) $x\sim z$, then, as $y\sim z$, it would imply that $x\approx y$. A contradiction.
+\item[] Case 4) $x\prec z$. As the rest of the cases failed, then this must be true. $\Box$
+\end{itemize}
+
+{\bf Proof (ii)} Again, by theorem 3.1, we have 4 possible cases
+
+\begin{itemize}
+\item[] Case 1) $z\prec x$. By transitivity of $\prec$, it implies $y\prec x$. A contradiction.
+\item[] Case 2) $x\approx z$. By symmetry and transitivity of $\approx$, it implies that $y\approx z$. A contradiction.
+\item[] Case 3) $x\sim z$. By definition it would imply $y\sim z$. A contradiction.
+\item[] Case 4) $x\prec z$. Therefore, as 1 to 3 are false, it must be the case that this is true. $\Box$
+\end{itemize}
+
 \item Let $\prec^*$ defined on $X/\approx$ by
 \begin{equation*}
 a\prec^* b\iff x\prec y\text{ for some $x\in a$ and $y\in b$}
 \end{equation*}
 
 Then, $\prec^*$ on $X/\approx$ is a strict partial order.
+
+{\bf Proof} In order for $\approx$ to be a strict partial order, it needs to be irreflexive and transitive.
+
+{\bf (Irreflexivity)} Assume is not, then if we have $a\prec^*a$, we should have $x\prec y$ s.t. $x,y\in a$, but, as $a$ is an equivalence class under $\approx$, it should be the case that $x\approx y$. Which is a contradiction. $\Box$
+
+{\bf (Transitivity)} Let $a\prec^*b,b\prec^*c$, then for some $x\in a,y\in b\tand z\in c$ we should have $x\prec y,y\prec c$. Therefore, by transitivity of $\prec$ we should have $x\prec y$. Furthermore, WLOG this should be true for $\forall x\in a,y\in b,z\in c$. Hence $a\prec^* c$. $\Box$
 \end{enumerate}
 
 \section{Zorn's Lemma and Szpilrajn's Extension Theorem}
@@ -253,7 +296,7 @@ Then, $\prec^*$ on $X/\approx$ is a strict partial order.
 x\prec^* y\implies x\prec^\circ y
 \end{equation*}
 
-\noindent {\bf Zorn's Lemma:} Suppose that (i) $P$ on $Y$ is a strict partial order and (ii) for any subset $Z$ of $Y$ on which $P$ is a strict order, there is a $y\in Y$ s.t.
+{\bf Zorn's Lemma:} Suppose that (i) $P$ on $Y$ is a strict partial order and (ii) for any subset $Z$ of $Y$ on which $P$ is a strict order, there is a $y\in Y$ s.t.
 
 \begin{equation*}
 zPy\tor z=y\tforall z\in Z.
@@ -280,4 +323,92 @@ Then, there is a $y^*\in Y$ s.t. $y^*Px$ for no $x\in Y$.
 \item $x\approx y\implies u(x)=u(y)$.
 \end{enumerate}
 
+\section{Ordered Indifference Intervals}
+
+In this section, we will obtain a result
+
+\begin{equation*}
+x\prec y \iff u(x) + \sigma(x) < u(y)
+\end{equation*}
+
+where $\sigma > 0$. This model satisfies irreflexivity and the next axiom p10. {\bf What is the difference from} $x\prec y\iff u(x)+\sigma(x)<u(y)-\sigma(y)$
+
+{\bf Definition:}
+\begin{align}
+(p10) &\qquad (x\prec y,z\prec w)\implies (x\prec w\tor z\prec y)\\
+(p11) &\qquad (x\prec y,y\prec z)\implies (x\prec w\tor w\prec z)
+\end{align}
+
+{\bf Definition:} A binary relation is called an {\it interval order} if it is irreflexive and satisfies p10, and semiorder if it is irreflexive and satisfies p10 and p11.
+
+{\bf Remark:} p10 and irreflexivity imply transitivity.
+
+{\bf Definition:}
+
+\begin{align*}
+x<^1 y\tif & (x\sim z,z\prec y)\text{ for some }z\in X,\\
+x <^2 y\tif & (x\prec z,z\sim y)\text{ for some }z\in X.
+\end{align*}
+
+{\bf Theorem 6.} If $\prec$ on $X$ is an interval order then each $<^1$ and $<^2$ is a weak order, and
+
+\begin{equation*}
+x\approx y\iff (x=^1y,x=^2y)
+\end{equation*}
+
+where $x=^j y\iff (\tnot x<^j y,\tnot y<^j x)$.
+
+{\bf Proof ($<^1$ is a weak order)} In order to show this, we need to prove that it is asymmetric and negatively transitive
+
+(Asymmetry) Proof by contradiction, assume $x<^1y,y<^1x$, then, by definition we have $(x\sim a,a\prec y),(y\sim b,b\prec x)$. Now, using p10 we get $(a\prec y,b\prec x)\implies (a\prec x\tor b\prec y)$, then we have two cases:
+
+\begin{itemize}
+\item[] Case 1) $a\prec x$, but $x\sim a$. A contradiction.
+\item[] Case 1) $b\prec y$, but $y\sim b$. A contradiction.
+\end{itemize}
+
+Therefore, it should be true that $\prec^1$ is asymmetric. $\Box$
+
+{\bf Proof ($<^2$ is a weak order)} Idem as the previous proof.
+
+(Asymmetry) Proof by contradiction, assume $x<^2y,y<^2x$, then by definition we have $(x\prec a,a\sim y),(y\prec b,b\sim x)$. Now, by p10 we know that $(x\prec a,y\prec b)\implies x\prec b\tor y\prec a$, thus we have two cases:
+
+\begin{itemize}
+\item[] Case 1) $x\prec b$, but $x\sim b$. A contradiction.
+\item[] Case 2) $y\prec a$, but $a\sim y$. A contradiction.
+\end{itemize}
+
+Therefore, it must be the case that $<^2$ is asymmetric. $\Box$
+
+{\bf Proof ($x\approx y\iff (x=^1y,x=^2y)$)}
+
+{\bf ($\Rightarrow$)} 
+
+{\bf ($\Leftarrow$)} By contradiction, assume not, then $(x=^1y,x=^2y)\implies\tnot x\approx y$. By definition of $=^1,=^2$ we have
+\begin{align*}
+(\tnot x<^1y,\tnot y<^1x)&, (\tnot x<^2y,\tnot y<^2x)\\
+(\tnot x\sim z\tor\tnot z<y),(\tnot y\sim z\tor\tnot z<x)&,(\tnot x< z\tor\tnot z\sim y),(\tnot y< z\tor\tnot z\sim x),
+\end{align*}
+
+and for the case of $\tnot x\approx y$
+\begin{align*}
+(\tnot x\sim z,y\sim z)&\tor(x\sim z,\tnot y\sim z)\\
+(x<z,y\sim z)\tor(z<x,y\sim z)&\tor(y<z,x\sim z)\tor(z<y,x\sim z)
+\end{align*}
+thus we have four cases:
+
+\begin{itemize}
+\item[] Case 1) $(x<z,y\sim z)$, which contradicts $(\tnot x< z\tor\tnot z\sim y)$,
+\item[] Case 2) $(z<x,y\sim z)$, which contradicts $(\tnot y\sim z\tor\tnot z<x)$,
+\item[] Case 3) $(y<z,x\sim z)$, which contradicts $(\tnot y< z\tor\tnot z\sim x)$,
+\item[] Case 4) $(z<y,x\sim z)$, which contradicts $(\tnot x\sim z\tor\tnot z<y)$.
+\end{itemize}
+
+Thereby, it should be the case that $(x=^1y,x=^2y)\implies x\approx y$. $\Box$
+
+{\bf Theorem 7.} If $\prec$ on $X$ is an interval order and $X/\approx$ is countable then there aer real valued functions $u$ and $\sigma$ on $X$ with $\sigma(x)>0$ for all $x\in X$ s.t.
+
+\begin{equation*}
+x\prec y\iff u(x)+\sigma(x)<u(y)
+\end{equation*}
 \end{document}
