@@ -3,7 +3,13 @@
 \usepackage{amsmath,amssymb,cancel}
 \usepackage{hyperref}
 \usepackage{qtree}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\X}{\mathcal{X}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\Lm}{\mathcal{L}}
+\newcommand{\Om}{\mathcal{O}}
+\newcommand{\core}{C_{f}(\rho)}
+
 
 
 \title{SS 202A: }
@@ -237,8 +243,578 @@ The following three conditions are equivalent:
 
 \textbf{\emph{Proof:}}
 
+\section*{Lecture 5: October 14, 2014}
+ %End of GS Proof
+ 
+ \subsection*{Properties of Aggregation Rules}
+ \begin{itemize}
+ 
+ \item Decisive:
 
- %test
+ \[
+\rho\hat{\rho}|_{(x,y)} P(x,y; \rho) = P(x,y; \hat{\rho}), \text{ then } xPy \Rightarrow x\hat{P}y
+ \]
+
+
+ \item Monotonicity:
+
+ \[
+P(x,y;\rho)\subseteq P(x,y; \rho') \text{ \textbf{\underline{\&}} } R(x,y;\rho)\subseteq R(x,y; \rho') \text{ and } xPy ]  \text{ imply } xP'y
+ \]
+
+
+ \item Positive Responsiveness:
+
+An aggregation rule is \textbf{positively responsive} if and only if, for all profiles $\rho,\rho' \in \R^n$ and all $x,y \in X$, if $xRy, P(x,y;\rho) \subseteq P(x,y;\rho')$ and $P(y,x; \rho)\supseteq P(y,x; \rho')$ with at least on inclusion being strict, then $xP'y$. 
+\item Neutral if and only if, given $(\rho, \hat{\rho}, x,y,a,b) $:
+
+\begin{align*}
+P(x,y;\rho) &= P(a,b; \hat{\rho}),\\
+\&R(x,y;\rho) &= R(a,b; \hat{\rho}),\\
+xRy &\Rightarrow aRb
+\end{align*}
+
+\item Anonymity:
+
+\[
+G:N\to N|\rho \Rightarrow \rho' \text{ s.t. } R'_i = R_{G(i)} \text{ then } f(p) = f(p')
+\]
+
+ \end{itemize}
+
+  \subsection*{Simple Rules}
+
+  A decisive coalition is defined:
+
+  \[
+  L \subseteq N \Leftrightarrow \forall x,y;\; \; xP_iy \; \; [\forall i \in L ]\Rightarrow xPy
+  \]
+
+  $f \rightarrow L(f)$ is the set of decisive coalitions.
+
+  Example: if dictorial, the decisive coalition is \underline{any} coalition with the dictator. That is (\{1\},\{1,2\},\{1,3\},\{1,2,3\}) = $L(f)$
+
+This set $L(f)$ is:
+
+\begin{itemize}
+
+\item Monotonic:
+
+\[
+L \subseteq L', \text{ then } L \in L(f) \Rightarrow L'\in L(f)
+\]
+
+
+\item Properness:
+
+\[
+L \in L(f) \Rightarrow [N\setminus L ]\not \in L(f)
+\]
+\end{itemize}
+
+\underline{Theorem:}
+A rule $f$ is \emph{simple} if and only if it is \textbf{decisive}, \textbf{neutral}, and \textbf{monotonic}.
+
+\underline{Proof:}
+WTS: $f = f_{L(f)}$. We show this in two parts:
+
+\begin{enumerate}
+
+\item $xPy \Rightarrow xP_{L(f)}y$,
+\item $ xP_{L(f)}y \Rightarrow xPy$.
+\end{enumerate}
+\bigskip
+\begin{enumerate}
+
+\item WTS:  $xPy \Rightarrow xP_{L(f)}y$.
+
+That is, we want to demonstrate that if $xPy$, it is formed by a decisive coalition $L \in L(f)$. This proof proceeds by starting with some $\rho$, transforming the profile in several steps in order to find $\hat{\rho} $. That is, transform $\rho \to \rho^1 \to \rho^2 \dots \to \hat{\rho} $.
+
+We will show this by an example with seven individuals.
+
+\begin{itemize}
+
+\item $\rho$: A profile such that $xPy$, with a group G such that $\forall i \in G, xP_iy$. Individuals in $j \in [N\setminus G]$ either $xI_jy$ or $yP_jx$.
+
+\item $\rho'$: Define $rho'$ such that 
+\begin{align*}
+P(x,y;\rho) &= P(w,v; \rho'),\\
+\&R(x,y;\rho) &= R(w,v; \rho'),\\
+\end{align*}
+
+Because simple rules are neutral, it must be that $wP'v$. Further, note that we still have $\forall i \in G, wP_iv$.
+
+\item $\rho''$: Change the profile such that some individuals  $j \in [N\setminus G]$ for whom $wI_jv$ are now $wP_jv$. By monotonicity, $wP''v$.
+
+
+\item $\rho'''$: Any individual $j$ such that $\neg(wP_jv)$ may change their preference arbitrarily under $\rho'''$. Because the aggregation rule is decisive, and $P(w,v; \rho'') \subseteq P(w,v; \rho''')$ and $wP''v, wP'''v$.
+
+Further, it is still true that for group G, $\forall i \in G, wP_iv$. 
+
+\end{itemize}
+
+Thus, we show that G is a decisive coalition: regardless of the transformation, group G remains a decisive coalition and their preference represents the preference choosen under the aggregation rule. Thus, $f = f_{L(f)} $.
+
+
+
+\item WTS:  $ xP_{L(f)}y \Rightarrow xPy$.
+
+$\exists L \in L_{(f)}$ such that $xP_iy [\forall i \in L]$, so $xP_{L(f)}y$. Then, by the definition of decisive coalition, $\Rightarrow xPy$.
+
+\end{enumerate}
+
+
+\section*{Lecture 6: October 16, 2014}
+
+\subsection*{Voting Rules}
+
+ A  ``pair'' coalition is group $(S,W)|_{(x,y)}$ where $i \in S: xP_iy$ and $j \in W: xR_iy$.e say $S$
+
+\underline{Definition:} \emph{Decisive Pair:}  $D(f) = (S,W)$ where $S\subseteq W$ such that:
+
+\[
+\{xP_iy [\forall i \in S] xR_iy [\forall i \in W]\} \Rightarrow xPy
+\]
+
+\underline{Definition}: \emph{Voting Rule}: $f \equiv f_{D(f)}$
+
+
+\underline{Theorem:}
+A rule $f$ is a \emph{voting rule} if and only if it is \textbf{neutral}, and \textbf{monotonic}.
+
+
+\subsection*{Counting Rules}
+
+Definition: The subset of voting rules that are \underline{anonymous}.
+
+\begin{itemize}
+
+\item In voting rules, we defined $(S,W) \in 2^N \times 2^N$.
+ 
+\item Now, define $(p,a) \in NxN$, where $p=$ pros $a=$ antis.
+
+\item  A pair of numbers is a decisive pair of numbers in $f$, denoted $N(f)$ if and only if $(x,y,\rho) $:
+
+\begin{align*}
+|P(x,y;\rho) &\geq pros|\\ %%Check this with book
+|P(y,x;\rho) &\leq antis|\\
+\end{align*}
+
+\item N is \textbf{monotonic} $\Leftrightarrow p,a \in N \Rightarrow (p',a') \text{ where } p'\geq p, a' \leq a \in N$.
+\item N is \textbf{proper} if $(p,a)$ such that $a\geq p$ then $(p,a) \not \in N$ 
+
+% \underline{Proof}: 
+
+% Observe the following preference profile with 5 individuals:
+
+% \begin{table}[h]
+% \begin{tabular}{lllll}
+% x & x & y & y & y \\
+% y & y & x & x & x
+% \end{tabular}
+% \end{table}
+
+% Now claim $(p,a) = (2,3)$ is a decisive pair where $a>p$, such that xPy.
+
+
+\end{itemize}
+
+The \textbf{definition of a counting rule} is:
+
+\[
+f=f_{N{(f)}}
+\]
+
+Note: 
+\begin{itemize}
+
+\item [--] Simple rules are \textbf{anonymous} if and only if they are \textbf{q-rules}.
+
+\item [--]Counting rules are \textbf{decisive} if and only if they are \textbf{q-rules}.
+\item [--] \textbf{May's Theorem:} A rule is neutral, anonymous, and positvely responsive if and only if it is a plurality rule.
+\end{itemize}
+
+
+\section*{Lecture 7: October 21, 2014}
+
+\textbf{Definition:} The \emph{collegium} of a set of decisive calitions $\Lm(f)$ is:
+
+\[
+K(\Lm(f)) \equiv \cap_{L\in\Lm(f)}L
+\]
+
+\begin{itemize}
+
+\item For a \underline{simple rule} if $\cap L_f \neq \emptyset$\dots we say the rule is ``collegial''. 
+
+$\Rightarrow$ If you are in the collegium, society cannot have a strict preference \underline{unless} $i \in L_f$ also has the preference.
+
+%Check sticky
+
+\item A dictorial simple rule has a collegium of 1 \dots the dictator.
+\end{itemize}
+
+Observe: if $f$ is collegial, then $f(\rho)$ is acylic $\forall \rho \in \R^n$.
+
+\begin{itemize}
+
+\item To have acyclicity requires $x_1Px_2P\dots Px_{k-1}Px_k$ and $x_kPx_1$
+\item To get this in collegial simple rule would require $i \in K$ to have acyclic preferences.
+\item Collegial rules are   ``well behaved'' in the sense that acyclic $\Rightarrow$ non-empty maximal sets.
+\item $\star$ \textbf{BUT:} Collegial rules are also undesirable in the sense that you have a group fo dictators.
+\end{itemize}
+
+\subsection*{Nakamura Numbers and Acyclicity}
+
+\textbf{Definition:} The \emph{Nakamura Number} for a simple rule, s(f) is:
+
+\begin{itemize}
+
+\item $\infty$ if $f$ is collegial.
+\item Cardinality of the smallest non-collegial sub-family of decisive coalitions.
+\end{itemize}
+
+Example: Majority Rule:
+
+\[
+[\{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}]
+\]
+\[
+[\{1,2\}, \{1,3\}, \{2,3\}, \xcancel{\{1,2,3\}}] 
+\]
+
+Removing $\{1,2,3\}$ does not make it collegial, so for majority rule the $s(f)$ is exactly three.\footnote{Unless n=4, in which case $s(f)=4$.}
+
+\textbf{Note}: $s(f) \in \{3,\dots,n\}$.
+
+\bigskip
+
+\textbf{Theorem:} A simple rule is acyclic if and only if $|X| < s(f)$.
+
+Proof: (Sufficency)
+$|X| < s(f) \Rightarrow$ Acyclic.
+
+\begin{itemize}
+
+\item Suppose we have $|X| < s(f)$ but a cycle in societal preferences.
+
+That is, we have:
+
+\[
+x_1 P x_2 \dots Px_{k-1}Px_kPx_1
+\] 
+
+We know $k \leq |X|$ and so $k<s(f)$.
+
+
+\item Because $f$ is a simple rule, we must have decisive groups such that:
+
+\[
+\{ P(x_1,x_2; \rho), P(x_2,x_3; \rho) \dots P(x_k,x_1;\rho) \} \in \Lm(f)
+\]
+
+
+\item Given that we know $k < s(f)$, we know there are less decisive coalitions than what is minimially possible to allow for a non-collegial set of decisive coalitions\dots and so there must be one individual in each of the decisive coaltions. 
+\item But then this individual has cyclic preferences\dots a \textbf{contradiciton}.
+\end{itemize}
+
+\begin{itemize}
+
+\item If f is a q-rule, $s(f) = \left[\frac n {n-q}\right]$.
+
+\item Becuase the Nakamura Number of majority rule is ``roughly'' three (unless n=4), then you run into problems as soon as there are $\geq 3$ alternatives. You run into condorcet cycles.
+\end{itemize}
+
+\section*{ Oct 23: Restricting Preference Profiles}
+
+\subsection*{Single Peaked Preference}
+
+An individual $i$ is going to have \emph{single-peaked} preferences if we do the following:
+
+\begin{itemize}
+
+\item 
+Create some order $Q$ of alternatives, where $yQx$ is interpreted as ``$x$ is to the left of y'' on a number line. 
+\item Label alternatives $a_1,a_2 \dots a_r$ where $r = |X|$ such that $a_rQa_{r-1}\dots Qa_2Qa_1$
+\item We say that $i's$ preferences are single peaked with respect to an ordering $Q$ if and only if $\exists$ t such that:
+  \begin{itemize}
+  
+  \item $a_t P_i a_{t+1} \dots a_{r-1}P_ia_r$
+  \item $a_t P_i a_{t-1} \dots a_{2}P_ia_1$
+  \end{itemize} 
+\item We say $a_t$ is $i's$ ``ideal point'' or \underline{strictly} most preferred alternative
+\item A profile $\rho$ has single peaked preferences if there exists a singe $Q$ ordering such that $R_i$ is single peaked with respect to $Q$ for all $i$.
+\end{itemize}
+
+\bigskip
+
+\textbf{Theorem:} For all voting rules $f$, $f(\rho)$ is Quasi-Transitive for all $\rho \in S$.
+
+\bigskip
+
+\textbf{Define:} The \emph{``core''} of a preference aggregation rule $f$ as 
+
+\[
+M(f(\rho), X) \equiv C_f(\rho)
+\]
+
+\underline{Characterizing the Core}
+% \begin{itemize}
+
+% %STICKY
+% % \item Fpr a simple rule $f$, an alternative in the chore is characterized:
+
+% % \[
+% % y \in C_f(\rho) \Leftrightarrow z \neq y, L \in \Lm(f) \text{ s.t. } zPiy [\forall i \in \Lm]
+% % \]
+% \end{itemize}
+
+\underline{F-medians}
+
+\begin{itemize}
+
+\item Denote $x_i$ i's strictly best alternative
+\item 
+\begin{align*}
+z\in X: \;\;\; &L^{-}(z)=\{i:zQx_i\} \\
+&L^{+}(z)= \{i:x_iQz\} 
+\end{align*}
+
+\item The ``f-median'' is an alternative $z$ such that 
+\begin{align*}
+L^{-}(z) &\not \in \Lm (f)\\
+L^{+}(z)&\not \in \Lm (f)\\
+\end{align*}
+
+\subsection*{Order Restriction}
+
+Can you reorder the \textbf{individuals} such that for \emph{any} pair of alternatives $(x,y)$ satisfy the following property:
+
+\[
+P(x,y;\rho), I(x,y;\rho), P(y,x;\rho)
+\]
+
+Can put along a \textbf{single} line. Formally, if there exists an ordering of individuals $G(i): N \to N$, a set of preferences satisfies order restriction if and only if $\exists G(i)$ such that either:
+
+\[
+\{G(i)\in N:xP_iy\} \geq \{G(i)\in N:xPI_iy\} \geq \{G(i)\in N:yP_ix\}
+\]
+
+OR
+
+\[
+\{G(i)\in N:xP_iy\} \leq \{G(i)\in N:xPI_iy\} \leq \{G(i)\in N:yP_ix\}
+\]
+
+\textbf{Thereom:} Let $f$ be a voiting rule; then for all $\rho \in \Om, f(\rho)$ is quasi-transitive.
+
+
+\end{itemize}
+
+\section*{Lecture 9: October 28}
+\underline{The Core}
+\begin{itemize}
+  \item $C_{f(\rho)} = M(f(\rho),X)$
+
+  \item If $X<\infty$, for a simple rule:
+  \begin{itemize}
+    \item $f(\rho)$ is acylic when $\rho \in \mathcal{S}$.
+    \item $\core \neq \emptyset $ is characterized by f=medians
+    \item $\core$ of a voting rule $\Leftrightarrow$ $C_{f_{L(f)}}(\rho)$
+  \end{itemize}
+  \item Further, we know: 
+  \begin{itemize}
+  
+  \item When $f(\rho)$ is acylic, you have non-empty maximal sets $\Rightarrow \core \neq \emptyset$ 
+  \item For simple rules, $\core \neq \emptyset$ as long as $|X| < s(f)$
+  \item For order restrictions ($\rho \in \Om$), then $f(\rho)$ for a voting rule is Quasi-Transitive $\Rightarrow \core \neq \emptyset$ 
+  \end{itemize}
+\end{itemize}
+
+
+
+\begin{itemize}
+
+\item If $f$ is simple, 
+
+\[
+y \in \core \Leftrightarrow \not \exists x\neq y \;\;\&\;\; L\in\Lm(f): xP_iy [\forall i \in L]
+\]
+
+That is, the core is the stuff that is `unblocked.'' It \textbf{is} blocked if all members of a decisive group prefer some alternative.
+\end{itemize}
+
+\subsection*{Lower and Upper Contour Sets}
+
+\begin{align*}
+P_i^{-1}(x) &= \{y\in X: xPy\}\\
+P_i^{1}(x) &= \{y\in X: yPx\}
+\end{align*}
+
+$P_i^{-1}(x)$ is the lower (strictly worse than) set.
+$P_i^{1}(x)$ is the upper (strictly better than) set.
+
+\begin{align*}
+P_L^{-1}(x) = \cap_{i\in L} P_i^{-1}(x); \;\;\; & \;\;\;  P_L^{1}(x) = \cap_{i \in L} P_i^{1}(x)\\
+P_f^{-1}(x) = \cup_{L\in \Lm(f)} P_L^{-1}(x); \;\;\;&\;\;\;  P_f^{1}(x) = \cup_{L\in \Lm(f)} P_L^{1}(x)\\
+\end{align*}
+
+\textbf{NOTE:}
+
+\[
+x \in \core \Leftrightarrow P_f(x) = \emptyset
+\]
+
+Definition: the Pareto Set
+
+\[
+PS_L(\rho) = \{x\in X: \forall y \in X; \;\;\;\;yP_ix [i \in L] \Rightarrow xP_iy [i \in L] \}
+\]
+
+Alternatively, y is \textbf{not} in the Pareto set if:
+
+\[
+y \not \in PS_L(\rho) \Rightarrow \exists x \in X: xR_iy [\forall i \in L], xP_jy[ j \in L]
+\]
+
+\begin{itemize}
+
+\item Claim: If $x \in PS_L(\rho)\Rightarrow P_L(x) = \emptyset$
+
+\textbf{Proof:} Assume $x \in PS_L(\rho)$ but $P_L(x) \neq \emptyset$. Then $\exists y$ such that $yP_ix \forall i\in L
+.$ However, if this is true $x \not\in PS_L(\rho)$
+
+
+\item \emph{Note:} the convervse is not true. For example, if $\{x,y\} = X, N=2$ and the two profiles are $yP_ix$ and $yI_jx$, then the pareto set is $y$ but the upper contour set is $\emptyset$.
+
+\item We thus can say for a coalition, the pareto set is a subset of things with empty upper contour sets:
+
+\[
+PS_L(\rho) \subseteq \{x\in X: P_L(x) = \emptyset\}
+\]
+
+\end{itemize}
+
+\begin{itemize}
+
+\item Claim: $\core \equiv \cap_{L\in L(f)} PS_L(\rho) $
+
+
+\item Show: if $f$ is simple, then 
+\[
+\cap_{L\in \Lm(f)} PS_L \subseteq C_f(\rho)
+\]
+
+\textbf{Proof:}
+ $x \in PS_L(\rho)$ of an $L\in \Lm(f) \Rightarrow P_L(x) = \emptyset$. Ergo, $P_f(x) =  \cup_{L\in L(f)} P_L(x) = \emptyset \dots x\in\core$.
+ \item Now, if $|X| < \infty; \rho \in S ; f$ simple, then:
+
+\[
+C_f(\rho) \subseteq \cap_{L\in \Lm(f)} PS_L 
+\]
+
+\textbf{Proof:}
+
+Prove the contrapositive: suppose $x \not \in \cap_{L\in \Lm(f)} PS_L$.
+
+Then, there exists an $L$ and $y \neq x$ such that 
+
+\begin{align*}
+yR_ix \;\;\;\;\;\;&\forall i\in L\\
+yP_jx \;\;\;\;\;\;&\text{ for some } j\in L
+\end{align*}
+
+If on the realm of single peaked preferences, this means there exists $z$ such that $zP_i x [\forall i \in L] \Rightarrow zPX \Rightarrow x \not \in \core$
+\end{itemize}
+\section*{Lecture 10: October 30}
+\subsection*{Spatial Model}
+
+\textbf{\underline{Outline:}}
+\begin{itemize}
+  \item Consider Single Peaked Prefereence $\rho \in S$ in $\RR^1 \equiv [0,1]$
+
+  This is a strict quasi-concave utility:
+
+  \[
+  u(\lambda x + (1-\lambda) y > \min\{u(x),u(y)\})
+  \]
+
+\item There is an analog to Single-Peakedness in $\RR^k$. \textbf{However}, in general S.P. in $\RR^N$ is \underline{not} sufficient to ensure non-empty cores.
+\item We want to say something about dimensionality of space and core existence.
+\item There are results that represent the Nakamura number and the $k$ that supports non-empty cores.
+\item Consider k's and rules such that core non existence is \textbf{not} assured, and then consider \textbf{new} conditions for core existence.
+
+\item \textbf{In the end}: we find for Majority Rule, there is a ``genericity'' of core nonexistence when $k>2$.
+
+\underline{We make the following assumptions:
+}
+\item $X \equiv $ [closed and bounded]
+\item $R_i$ are continuous weak orders. Continuity is achieved if $P_i^{-1}(x) and P_i(x)$ are open for all $i \in X$ for all $x$.
+
+\end{itemize}
+
+
+\subsection*{Spatial Model: Analog to Single-Peaked Preferences in $\RR^k$}
+
+\underline{Strict Convexity}
+
+\begin{itemize}
+
+\item Preference relation $\R$ is strictly convex if and only if $\forall x \neq y$ and $xR_iy$, 
+
+\[
+[\lambda x + (1-\lambda)y] P_i y \;\;\; [\forall \lambda \in [0,1]]
+\]
+\item Then $\rho \in \RR^n_{cs}$ such that all $R_i$ are strictly convex.
+
+
+\item Note: if preferences are continuous, then for a utility function $u:(x)$ is strictly quasi concave:
+
+\[
+u(\lambda \cdot x + (1-\lambda) y) > \min \{u(x),u(y)\})
+\]
+
+\item This yields \textbf{strictly convex} upper contour sets
+
+\textbf{NOTE:} 
+
+Stricty Convexity $\Leftrightarrow$ Single peakedness in $\RR^k$ $\Leftrightarrow$ convexity of $P_i(x)$
+
+\end{itemize}
+
+\bigskip
+
+\begin{itemize}
+
+\item There is an analogy between 
+\begin{itemize}
+
+\item $\rho \in \R^n_{CS} $ with $X\subset \RR^K$ and,
+\item  $\rho \in S^n$ with $|X|<\infty$
+\end{itemize}
+\end{itemize}
+
+\underline{Euclidien Preferences}: $=(||x_i-x|| )^2$.
+\begin{itemize}
+
+\item Pareto set $PS_L(\rho)$ of a coalition L is the Convex Hull of $Y$ (Con$Y$) where $Y\equiv \{x_1,x_2 \dots, x_k\}$.
+
+\item The unique core point is the intersection of the convex hull/pareto set.
+
+\subsection*{Core (Non) Empty}
+In the finite world, $|X|<\infty$, not restrained to S.P.P, then the core is non empty if and only if $|X|<s(f)$. Thus, for majority rule where $s(f)$ generall equals 3, you can have at most two alternatives to ensure a non-empty core.
+
+For the continuos world, where $k\equiv$ dimensionality:
+
+\begin{itemize}
+  \item $k=1, \rho \in \R_{CS}$, then regardless of $s(f)$ core non-empty. 
+  \item If $k>1$, even with $\rho \in \R^n_{CS}$, we might have an empty core.
+\end{itemize}
+
+
+\end{itemize}
+
+
 
 
 \end{document}
